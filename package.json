@@ -17,7 +17,6 @@
   "author": "Alan Hortz <alan@handson.io>",
   "license": "MIT",
   "dependencies": {
-    "bleacon": "^0.5.1",
-    "documentdb": "^1.10.2"
+    "bleacon": "^0.5.1"
   }
 }

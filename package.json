@@ -1,0 +1,23 @@
+{
+  "name": "senseom-pi",
+  "version": "0.0.1",
+  "description": "SenseOm listen to Estimote stickers and update movement and temperature in the cloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot",
+    "home",
+    "automation",
+    "resin.io",
+    "Estimote",
+    "stickers"
+  ],
+  "author": "Alan Hortz <alan@handson.io>",
+  "license": "MIT",
+  "dependencies": {
+    "bleacon": "^0.5.1",
+    "documentdb": "^1.10.2"
+  }
+}

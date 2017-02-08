@@ -7,7 +7,7 @@ var log = new Logger({
 
 
 EstimoteSticker.on('discover', function(estimoteSticker) {
-    log.log("broadcast",estimoteSticker);
+    log.log("info",estimoteSticker);
 });
 
 EstimoteSticker.startScanning();

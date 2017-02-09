@@ -6,7 +6,7 @@ var log = new Logger({
 });
 
 const stickersMap = {
-    'b5018c2fff14ae40':'front-door'
+    'b5018c2fff14ae40':'front-door',
     'a4011c8c1bccdf55':'office-door'};
 
 EstimoteSticker.on('discover', function(estimoteSticker) {

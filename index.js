@@ -32,7 +32,6 @@ io.on('connection', function (socket) {
 
 EstimoteSticker.on('discover', function(estimoteSticker) {
     estimoteSticker.tag = stickersMap[estimoteSticker.id];
-    estimoteSticker.mathis = 'aprenti';
     log.log("info",estimoteSticker);
 });
 

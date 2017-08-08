@@ -1,7 +1,7 @@
 {
   "name": "senseom-pi",
   "version": "0.0.1",
-  "description": "SenseOm listen to Estimote stickers and update movement and temperature in the cloud.",
+  "description": "SenseOm is a web server that broadcast the data advertised by estimote stickers through socket.io",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,6 @@
   "dependencies": {
     "bleacon": "^0.5.1",
     "express": "^4.14.1",
-    "le_node": "^1.7.0",
     "socket.io": "^1.7.2"
   }
 }

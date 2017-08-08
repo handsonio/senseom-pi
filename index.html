@@ -2,22 +2,14 @@
 	<body>
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
-		  	var socket = io.connect('http://192.168.1.10');
+		  	var socket = io.connect();
 			
-			
-			function log(eventLabel){
-				socket.emit('log', { 'label': eventLabel });		  
-			}
-		</script>		
+				socket.on('sticker', function(sticker) {
+					console.log(sticker);
+				});		
+			</script>		
 
-		<div><button onclick="log('Debout dos droit')">Debout dos droit</button></div></div>
-		<div><button onclick="log('Debout vouté')">Debout vouté</button></div></div>
-		<div><button onclick="log('Assis dos droit')">Assis dos droit</button></div></div>
-		<div><button onclick="log('Assis vouté')">Assis vouté</button></div></div>
-		<div><button onclick="log('Couché face au sol')">Couché face au sol</button></div></div>
-		<div><button onclick="log('Couché dos au sol')">Couché dos au sol</button></div></div>
-		<div><button onclick="log('Couché sur le coté droit')">Couché sur le coté droit</button></div></div>
-		<div><button onclick="log('Couché sur le coté gauche')">Couché sur le coté gauche</button></div></div>
+
 
 		
 	</body>

@@ -7,11 +7,6 @@ const stickersMap = {
 
 var Bleacon = require('bleacon');
 var EstimoteSticker = Bleacon.EstimoteSticker;
-var Logger = require('le_node');
-
-var log = new Logger({
-  token:'fb3ab3f2-d8c6-4e77-8ce2-75962936fecc'
-});
 
 var app = require('express')();
 var server = require('http').Server(app);
@@ -23,16 +18,11 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
-io.on('connection', function (socket) {
-  socket.on('log', function (data) {
-    log.log("info",data);
-  });
-});
-
 
 EstimoteSticker.on('discover', function(estimoteSticker) {
     estimoteSticker.tag = stickersMap[estimoteSticker.id];
-    log.log("info",estimoteSticker);
+    io.emit('sticker', estimoteSticker);
+
 });
 
 EstimoteSticker.startScanning();

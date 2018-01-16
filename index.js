@@ -1,8 +1,19 @@
+var PubNub = require('pubnub')
+
 const stickersMap = {
     'b5018c2fff14ae40':'front-door',
     'a4011c8c1bccdf55':'office-door',
     '486a1154d89e3862':'wearable',
     '58ec63d39087614e':'fridge-door'};
+
+const pubnub = new PubNub({
+  publishKey : process.env.PUBNUB_PUBLISH_KEY || 'NO_KEY_PROVIDED'
+});
+
+const publishConfig = {
+  channel : 'SenseOm Pi',
+  message : 'Beacon Advertisement' 
+};
 
 
 var Bleacon = require('bleacon');
@@ -21,9 +32,15 @@ app.get('/', function (req, res) {
 
 EstimoteSticker.on('discover', function(estimoteSticker) {
     estimoteSticker.tag = stickersMap[estimoteSticker.id];
+    publishBeaconAdvertisement();
     io.emit('sticker', estimoteSticker);
 
 });
 
 EstimoteSticker.startScanning();
 
+function publishBeaconAdvertisement() {
+  pubnub.publish(publishConfig, function(status, response) {
+    console.log(status, response);
+  })
+}

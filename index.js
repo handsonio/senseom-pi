@@ -45,6 +45,5 @@ function publishBeaconAdvertisement(sticker) {
       if(status.error === true) {
         console.log(status, response);
       }
-    }
-  })
+  });
 }

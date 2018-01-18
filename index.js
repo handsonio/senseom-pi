@@ -12,8 +12,7 @@ const pubnub = new PubNub({
 });
 
 const publishConfig = {
-  channel : 'senseom_pi',
-  message : 'Beacon Advertisement' 
+  channel : 'senseom_pi'
 };
 
 
@@ -33,14 +32,15 @@ app.get('/', function (req, res) {
 
 EstimoteSticker.on('discover', function(estimoteSticker) {
     estimoteSticker.tag = stickersMap[estimoteSticker.id];
-    publishBeaconAdvertisement();
+    publishBeaconAdvertisement(estimoteSticker);
     io.emit('sticker', estimoteSticker);
 
 });
 
 EstimoteSticker.startScanning();
 
-function publishBeaconAdvertisement() {
+function publishBeaconAdvertisement(sticker) {
+  publishConfig.message = sticker;
   pubnub.publish(publishConfig, function(status, response) {
     console.log(status, response);
   })

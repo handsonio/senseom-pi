@@ -42,6 +42,9 @@ EstimoteSticker.startScanning();
 function publishBeaconAdvertisement(sticker) {
   publishConfig.message = sticker;
   pubnub.publish(publishConfig, function(status, response) {
-    console.log(status, response);
+      if(status.error === true) {
+        console.log(status, response);
+      }
+    }
   })
 }

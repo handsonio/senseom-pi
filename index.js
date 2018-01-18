@@ -7,11 +7,12 @@ const stickersMap = {
     '58ec63d39087614e':'fridge-door'};
 
 const pubnub = new PubNub({
-  publishKey : process.env.PUBNUB_PUBLISH_KEY || 'NO_KEY_PROVIDED'
+  publishKey : process.env.PUBNUB_PUBLISH_KEY || 'NO_KEY_PROVIDED',
+  subscribeKey : process.env.PUBNUB_SUBSCRIBE_KEY || 'NO_KEY_PROVIDED'
 });
 
 const publishConfig = {
-  channel : 'SenseOm Pi',
+  channel : 'senseom_pi',
   message : 'Beacon Advertisement' 
 };
 

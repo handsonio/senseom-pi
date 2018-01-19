@@ -12,7 +12,7 @@ const pubnub = new PubNub({
 });
 
 const publishConfig = {
-  channel : 'senseom_pi'
+  channel : process.env.PUBNUB_CHANNEL || null
 };
 
 

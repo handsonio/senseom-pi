@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-node
+FROM balenalib/raspberrypi3-node
 
 WORKDIR /usr/src/app
 

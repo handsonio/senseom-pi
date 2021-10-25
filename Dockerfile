@@ -1,4 +1,5 @@
-FROM balenalib/raspberrypi3-node
+#FROM balenalib/raspberrypi3-node
+FROM balenalib/raspberrypi3-node:8.11.4-jessie-build-20181025
 
 
 

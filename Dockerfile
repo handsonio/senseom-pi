@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 
 COPY package.json /usr/src/app/
 
+RUN npm install node-gyp
 RUN npm install
 
 

@@ -1,7 +1,7 @@
 #FROM balenalib/raspberrypi3-node
-FROM balenalib/raspberrypi3-node:8.11.4-jessie-build-20181025
+FROM balenalib/raspberrypi3-node
 
-
+WORKDIR /usr/src/app
 
 ENV INITSYSTEM on
 
@@ -10,25 +10,15 @@ ENV INITSYSTEM on
 RUN apt-get update
 RUN apt-get install wget
 
-RUN cd /usr/src
-RUN wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
-RUN sudo tar xzf Python-3.6.0.tgz
 
-RUN cd Python-3.6.0
-RUN sudo -s
-RUN bash configure
-RUN make altinstall
-RUN exit
-
-WORKDIR /usr/src/app
 
 # add the key for foundation repository
-RUN wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
+#RUN wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
 
 # add apt source of the foundation repository
 # we need this source because bluez needs to be patched in order to work with RPi3
 # issue #1314: How to get BT working on Pi3B. by clivem in raspberrypi/linux on GitHub
-RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/apt/sources.list
+#RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/apt/sources.list
 
 
 
@@ -39,6 +29,10 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
      libbluetooth-dev libudev-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install openSSH, remove the apt list to reduce the size of the image
+RUN apt-get update && apt-get install  \
+     bluetooth bluez  \
+     libbluetooth-dev libudev-dev 
 
 
 # Copy Storage mount definition file for systemd
@@ -46,8 +40,6 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 
 COPY package.json /usr/src/app/
 
-RUN npm install -g npm
-RUN npm install node-gyp
 RUN npm install
 
 

@@ -1,4 +1,3 @@
-var PubNub = require('pubnub')
 
 const stickersMap = {
     'a4011c8c1bccdf55':'beacon1',

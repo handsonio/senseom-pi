@@ -8,7 +8,7 @@ RUN install_packages make g++ bluetooth bluez libbluetooth-dev libudev-dev git
 COPY . .
 
 #install node dependencies
-RUN npm install @abandonware/noble
+RUN npm install noble
 RUN npm install bleacon
 RUN npm install express
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*

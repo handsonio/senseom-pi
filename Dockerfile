@@ -26,7 +26,7 @@ RUN apt-get install wget
 # Install openSSH, remove the apt list to reduce the size of the image
 RUN apt-get update && apt-get install -yq --no-install-recommends \
      bluetooth bluez bluez-firmware \
-     libbluetooth-dev libudev-dev \
+     libbluetooth-dev libudev-dev python3 pthon3-pip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install openSSH, remove the apt list to reduce the size of the image

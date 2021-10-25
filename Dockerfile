@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-node-node:12-latest-build as build
+FROM balenalib/raspberrypi3-node:12-latest-build as build
 
 WORKDIR /usr/src/app
 

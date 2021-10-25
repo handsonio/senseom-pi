@@ -9,6 +9,7 @@ COPY . .
 
 #install node dependencies
 RUN npm install @abandonware/noble
+RUN npm install https://github.com/alanhortz/node-bleacon/
 RUN npm install express
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*
 

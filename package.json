@@ -17,7 +17,7 @@
   "author": "Alan Hortz <alan@handson.io>",
   "license": "MIT",
   "dependencies": {
-    "bleacon": "0.5.1",
+    "bleacon": "https://github.com/alanhortz/node-bleacon/",
     "express": "4.17.1"
   }
 }

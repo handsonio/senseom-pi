@@ -28,7 +28,7 @@ RUN apt-get install wget
 # Install openSSH, remove the apt list to reduce the size of the image
 RUN apt-get update && apt-get install  \
      bluetooth bluez  \
-     libbluetooth-dev libudev-dev python3 python3-pip make
+     libbluetooth-dev libudev-dev python3 python3-pip make g++
 
 
 # Copy Storage mount definition file for systemd

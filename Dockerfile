@@ -9,7 +9,6 @@ COPY . .
 
 #install node dependencies
 RUN npm install @abandonware/noble
-RUN npm install https://github.com/alanhortz/node-bleacon/
 RUN npm install express
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*
 
@@ -67,7 +66,7 @@ ENV INITSYSTEM on
 
 
 #CMD ["bash", "start.sh"]
-COPY --from=build /app /app
+COPY --from=build /usr/src/app /usr/src/app
 
 CMD ["npm", "start"]
 

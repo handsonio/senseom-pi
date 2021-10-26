@@ -1,49 +1,18 @@
 var express = require("express");
-
-const BeaconScanner = require('node-beacon-scanner');
-const scanner = new BeaconScanner();
-
-const data = []
+var logger = require('morgan');
 
 
 var apiRouter = require('./api');
 var app = express();
 
-scanner.onadvertisement = (ad) => {
-  console.log(ad.id + ' / ' + ad.beaconType)
-  console.log(objToString(ad))
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-  if(ad.estimoteNearable) {
-    
-    console.log(objToString(ad.estimoteNearable))    
+// API 
+app.use('/api/v1', apiRouter);
 
-    console.log(objToString(ad.estimoteNearable.acceleration))
-  }
-
-//nearableId::f9d4334332bb3af1
-//temperature::22.125
-//moving::false
-//acceleration:
-
-}
-
-function objToString(obj) {
-  let str = '';
-  for (let p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str += p + '::' + obj[p] + '\n';
-    }
-  }
-  return str;
-}
-
-// Start scanning for iBeacons
-scanner.startScan().then(() => {
-  console.log('Started to scan.');
-}).catch((error) => {
-  console.error(error);
-});
-
+app.listen(process.env.PORT, () => console.log(`Senseom-pi server is running`))
 // const stickersMap = {
 //     'a4011c8c1bccdf55':'beacon1',
 //     'a435b39904f64794':'beacon2',

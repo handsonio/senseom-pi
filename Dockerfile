@@ -22,4 +22,8 @@ RUN sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
 WORKDIR /app
 COPY --from=build /app /app
 
+
+ENV PORT=80
+EXPOSE 80
+
 CMD ["node", "index.js"]

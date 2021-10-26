@@ -13,18 +13,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/v1', apiRouter);
 
 app.listen(process.env.PORT, () => console.log(`Senseom-pi server is running`))
-// const stickersMap = {
-//     'a4011c8c1bccdf55':'beacon1',
-//     'a435b39904f64794':'beacon2',
-//     'f9d4334332bb3af1':'beacon3',
-// };
-
-
-// const stickerDatabase = {
-//     'beacon1':null,
-//     'beacon2':null,
-//     'beacon3':null
-// }
 
 
 // var Bleacon = require('bleacon');

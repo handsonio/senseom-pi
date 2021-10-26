@@ -18,6 +18,21 @@ beacons.get("/", async (req, res, next) => {
     res.json(data)
 });
 
+beacons.get("/:beaconId([0-9a-fA-F]{16})", async (req, res, next) => {
+    
+    switch(req.params.beaconId) {
+        case 'a4011c8c1bccdf55': 
+        res.json(data[0])
+        break
+    case 'a435b39904f64794':
+        res.json(data[1])
+        break
+    case 'f9d4334332bb3af1':
+        res.json(data[2])
+        break        
+    }
+})
+
 
 scanner.onadvertisement = (ad) => {
     console.log(ad.id + ' / ' + ad.beaconType)

@@ -10,6 +10,8 @@ const stickersMap = {
     'f9d4334332bb3af1':'beacon3',
 };
 
+var EXPECTED_MANUFACTURER_DATA_LENGTH = 22;
+
 var data = [{}, {}, {}]
 
 var beacons = express.Router();
@@ -74,6 +76,19 @@ scanner.onadvertisement = (ad) => {
   
   }
   
+  function convertMotionStateDuration(raw) {
+    var unit = (raw >> 6) & 0x03;
+    var duration = (raw & 0x3f);
+  
+    if (unit === 1) {
+      duration *= 60;
+    } else if (unit === 2) {
+      duration *= (60 * 60);
+    }
+  
+    return duration;
+  }
+
   function objToString(obj) {
     let str = '';
     for (let p in obj) {

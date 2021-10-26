@@ -9,7 +9,7 @@ COPY . .
 
 #install node dependencies
 RUN npm install @abandonware/noble
-RUN npm install node-beacon-scanner
+RUN npm install https://github.com/handsonio/node-beacon-scanner
 RUN npm install express
 RUN npm install morgan
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*

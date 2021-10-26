@@ -18,19 +18,31 @@ beacons.get("/", async (req, res, next) => {
     res.json(data)
 });
 
-beacons.get("/:beaconId([0-9a-fA-F]{16})", async (req, res, next) => {
-    
-    switch(req.params.beaconId) {
+beacons.param("beaconId", async (req, res, next, id) => {
+    switch(id) {
         case 'a4011c8c1bccdf55': 
-        res.json(data[0])
+        req.beacon = data[0]
         break
     case 'a435b39904f64794':
-        res.json(data[1])
+        req.beacon = data[1]
         break
     case 'f9d4334332bb3af1':
-        res.json(data[2])
+        req.beacon = data[2]
         break        
     }
+
+    next()
+
+})
+
+
+beacons.get("/:beaconId([0-9a-fA-F]{16})", async (req, res, next) => {
+    res.json(req.beacon)
+})
+
+
+beacons.get("/:beaconId([0-9a-fA-F]{16})/temperature", async (req, res, next) => {
+    res.json(req.beacon.temperature)
 })
 
 

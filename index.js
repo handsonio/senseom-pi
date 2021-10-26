@@ -4,6 +4,17 @@ const scanner = new BeaconScanner();
 
 scanner.onadvertisement = (ad) => {
   console.log(ad.id + ' / ' + ad.beaconType)
+  console.log(objToString(ad))
+}
+
+function objToString(obj) {
+  let str = '';
+  for (let p in obj) {
+    if (obj.hasOwnProperty(p)) {
+      str += p + '::' + obj[p] + '\n';
+    }
+  }
+  return str;
 }
 
 // Start scanning for iBeacons

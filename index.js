@@ -1,16 +1,20 @@
 const BeaconScanner = require('node-beacon-scanner');
 const scanner = new BeaconScanner();
 
+const data = []
+
 
 scanner.onadvertisement = (ad) => {
   console.log(ad.id + ' / ' + ad.beaconType)
   
   
+
   console.log(objToString(ad))
   if(ad.estimoteNearable) {
     console.log(objToString(ad.estimoteNearable))    
-  }
 
+    console.log(objToString(ad.estimoteNearable.acceleration))
+  }
 
 }
 

@@ -4,7 +4,14 @@ const scanner = new BeaconScanner();
 
 scanner.onadvertisement = (ad) => {
   console.log(ad.id + ' / ' + ad.beaconType)
+  
+  
   console.log(objToString(ad))
+  if(ad.estimoteNearable) {
+    console.log(objToString(ad.estimoteNearable))    
+  }
+
+
 }
 
 function objToString(obj) {
